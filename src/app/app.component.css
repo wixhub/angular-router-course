@@ -1,22 +1,19 @@
-
->>> body {
-    margin: 0;
+body {
+  margin: 0;
 }
 
 main {
-    margin: 30px;
+  margin: 30px;
 }
 
 .user-avatar {
   max-height: 35px;
   border-radius: 4px;
-
 }
 
 .toolbar-tools {
   display: flex;
 }
-
 
 .filler {
   flex: 1 1 auto;
@@ -25,13 +22,12 @@ main {
 
 .menu-item {
   text-transform: uppercase;
-  cursor:pointer;
+  cursor: pointer;
 }
 
 .menu-item.menu-item-active {
-  text-decoration: underline;
+  background-color: blue;
 }
-
 
 .profile-picture {
   max-height: 40px;
