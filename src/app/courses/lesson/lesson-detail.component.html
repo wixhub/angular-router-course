@@ -2,7 +2,7 @@
   >Back To Course</a
 >
 
-<div class="lesson-detail" *ngIf="lesson">
+<div class="lesson-detail" *ngIf="lesson$ | async as lesson">
   <h3>{{ lesson.description }}</h3>
 
   <h5>Duration: {{ lesson.duration }}</h5>

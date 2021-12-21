@@ -14,14 +14,15 @@ import { map } from "rxjs/operators";
   styleUrls: ["./lesson-detail.component.css"],
 })
 export class LessonDetailComponent implements OnInit {
-  lesson: LessonDetail;
+  lesson$: Observable<LessonDetail>;
 
   constructor(private route: ActivatedRoute, private router: Router) {
     console.log("Created LessonDetailComponent...");
   }
 
   ngOnInit() {
-    this.lesson = this.route.snapshot.data["lessons"];
+    //this.lesson = this.route.snapshot.data["lesson"];
+    this.lesson$ = this.route.data.pipe(map((d) => d["lesson"]));
   }
 
   previous(lesson: LessonDetail) {

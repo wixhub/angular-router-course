@@ -25,7 +25,7 @@ const routes: Routes = [
       {
         path: "lessons/:lessonSeqNo",
         component: LessonDetailComponent,
-        resolve: { lessons: LessonDetailResolver },
+        resolve: { lesson: LessonDetailResolver },
       },
     ],
     resolve: {
