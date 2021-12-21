@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import {
   ActivatedRouteSnapshot,
   CanActivate,
+  CanActivateChild,
   RouterStateSnapshot,
   UrlTree,
 } from "@angular/router";
@@ -11,14 +12,26 @@ import { map } from "rxjs/operators";
 import { AuthStore } from "./auth.store";
 
 @Injectable()
-export class AuthGuard implements CanActivate {
+export class AuthGuard implements CanActivate, CanActivateChild {
   constructor(private auth: AuthStore, private router: Router) {}
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean | UrlTree> {
+    return this.checkIfAuthenticated();
+  }
+  canActivateChild(
+    childRoute: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ): Observable<boolean | UrlTree> {
+    return this.checkIfAuthenticated();
+  }
+
+  private checkIfAuthenticated() {
     return this.auth.isLoggedIn$.pipe(
-      map((loggedIn) => (loggedIn ? true : this.router.parseUrl("/login")))
+      map((loggedIn) => {
+        return loggedIn ? true : this.router.parseUrl("/login");
+      })
     );
   }
 }
