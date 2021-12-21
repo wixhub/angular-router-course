@@ -16,11 +16,23 @@ import { map } from "rxjs/operators";
 export class LessonDetailComponent implements OnInit {
   lesson: LessonDetail;
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute, private router: Router) {
     console.log("Created LessonDetailComponent...");
   }
 
   ngOnInit() {
     this.lesson = this.route.snapshot.data["lessons"];
+  }
+
+  previous(lesson: LessonDetail) {
+    this.router.navigate(["lessons", lesson.seqNo - 1], {
+      relativeTo: this.route.parent,
+    });
+  }
+
+  next(lesson: LessonDetail) {
+    this.router.navigate(["lessons", lesson.seqNo + 1], {
+      relativeTo: this.route.parent,
+    });
   }
 }

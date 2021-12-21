@@ -61,7 +61,6 @@ export class CoursesService {
     courseUrl: string,
     lessonSeqNo: string
   ): Observable<LessonDetail> {
-    console.log(courseUrl, lessonSeqNo);
     return this.http
       .get<LessonDetail>(`/api/lesson-details`, {
         params: {
