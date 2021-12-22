@@ -48,7 +48,15 @@ const routes: Routes = [
     RouterModule.forRoot(routes, {
       preloadingStrategy: PreloadAllModules,
       enableTracing: false,
-      useHash: true,
+      //useHash: true,
+      scrollPositionRestoration: "enabled",
+      paramsInheritanceStrategy: "always",
+      relativeLinkResolution: "corrected", // ../
+      malformedUriErrorHandler: (
+        error: URIError,
+        UrlSerializer: UrlSerializer,
+        url: string
+      ) => UrlSerializer.parse("/page-not-found"), //PageNotFoundComponent
     }),
   ],
   exports: [RouterModule],
