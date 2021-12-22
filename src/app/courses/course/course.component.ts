@@ -16,6 +16,11 @@ export class CourseComponent implements OnInit {
 
   ngOnInit() {
     this.course = this.route.snapshot.data["course"];
+
+    //localhost:4200/courses/angular-router-course?couponCode=NEW_YEAR
+    this.couponCode = this.route.snapshot.queryParamMap.get("couponCode");
+
+    //this.route.queryParams
   }
 
   confirmExit() {
