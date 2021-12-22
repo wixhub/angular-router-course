@@ -32,7 +32,12 @@
       </a>
     </div>
 
-    <a mat-button class="menu-item" *ngIf="auth.isLoggedIn$ | async">
+    <a
+      mat-button
+      class="menu-item"
+      *ngIf="auth.isLoggedIn$ | async"
+      [routerLink]="[{ outlets: { chat: ['helpdesk-chat'] } }]"
+    >
       <mat-icon>help</mat-icon>
     </a>
 
@@ -59,3 +64,4 @@
 
   <router-outlet></router-outlet>
 </mat-sidenav-container>
+<router-outlet name="chat"></router-outlet>
