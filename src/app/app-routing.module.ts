@@ -18,6 +18,15 @@ const routes: Routes = [
     redirectTo: "/courses",
     pathMatch: "full",
   },
+  {
+    path: "courses",
+    loadChildren: () =>
+      import("./courses/courses.module").then((n) => n.CoursesModule),
+    //canLoad: [CanLoadAuthGuard],
+    data: {
+      preload: false,
+    },
+  },
   { path: "login", component: LoginComponent },
   {
     path: "about",
@@ -27,15 +36,6 @@ const routes: Routes = [
     path: "helpdesk-chat",
     component: ChatComponent,
     outlet: "chat",
-  },
-  {
-    path: "courses",
-    loadChildren: () =>
-      import("./courses/courses.module").then((n) => n.CoursesModule),
-    //canLoad: [CanLoadAuthGuard],
-    data: {
-      preload: false,
-    },
   },
   {
     path: "**",
